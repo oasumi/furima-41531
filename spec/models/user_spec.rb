@@ -55,7 +55,19 @@ RSpec.describe User, type: :model do
       end
 
       it 'passwordが半角英数字混合でないと保存できないこと' do 
-        @user.password = ''
+        @user.password = '111111'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください') 
+      end
+
+      it 'passwordが半角英数字混合でないと保存できないこと' do 
+        @user.password = 'aaaaaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください') 
+      end
+
+      it 'passwordが半角英数字混合でないと保存できないこと' do 
+        @user.password = 'ああああああ'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください') 
       end
