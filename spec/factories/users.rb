@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :user do
-
     nickname { 'asumi' }
     email { 'test@example' }
     password { 'test1234' }
@@ -10,6 +9,5 @@ FactoryBot.define do
     last_name_kana { 'オノ' }
     first_name_kana { 'アスミ' }
     birth_date { '1990-01-01' }
-    
   end
 end
