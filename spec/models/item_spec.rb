@@ -120,11 +120,6 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
-
-
-
-
-
     end
   end
 end
