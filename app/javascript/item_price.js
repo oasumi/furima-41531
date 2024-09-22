@@ -8,6 +8,5 @@ const price = () => {
       addPofitDom.innerHTML = Math.floor(price - Math.floor(price * 0.1 ))
   });
 };
-window.addEventListener("load", price);
 window.addEventListener("turbo:load", price);
 window.addEventListener("turbo:render", price);
