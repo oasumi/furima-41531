@@ -6,7 +6,6 @@ RSpec.describe Item, type: :model do
   end
 
   describe '商品出品' do
-
     context '内容に問題ない場合' do
       it 'すべての情報があれば登録できる' do
         expect(@item).to be_valid
@@ -21,9 +20,9 @@ RSpec.describe Item, type: :model do
       end
 
       it 'item_nameが41文字以上では登録できない' do
-        @item.item_name =  Faker::Lorem.characters(number: 41)
+        @item.item_name = Faker::Lorem.characters(number: 41)
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item name is too long (maximum is 40 characters)")
+        expect(@item.errors.full_messages).to include('Item name is too long (maximum is 40 characters)')
       end
 
       it 'item_descriptionが空だと保存できないこと' do
@@ -33,9 +32,9 @@ RSpec.describe Item, type: :model do
       end
 
       it 'item_descriptionが1001文字以上では登録できない' do
-        @item.item_description =  Faker::Lorem.characters(number: 1001)
+        @item.item_description = Faker::Lorem.characters(number: 1001)
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item description is too long (maximum is 1000 characters)")
+        expect(@item.errors.full_messages).to include('Item description is too long (maximum is 1000 characters)')
       end
 
       it 'category_idが空だと保存できないこと' do
@@ -89,13 +88,13 @@ RSpec.describe Item, type: :model do
       it 'item_priceが299円以下であれば保存できない' do
         @item.item_price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item price must be greater than or equal to 300")
-      end     
+        expect(@item.errors.full_messages).to include('Item price must be greater than or equal to 300')
+      end
 
       it 'item_priceが10000000円以上であれば保存できない' do
-        @item.item_price = 10000000
+        @item.item_price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Item price must be less than or equal to 9999999')
       end
 
       it 'item_priceが半角数値でないと保存できないこと' do
@@ -115,7 +114,6 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Item price is not a number')
       end
-
     end
   end
 end
