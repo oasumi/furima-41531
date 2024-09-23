@@ -131,15 +131,15 @@
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにする %>
         <% @items.each do |item| %>
           <li class='list'>
-            <%= link_to "#" do %>
+            <%= link_to item_path(item.id) do %>
               <div class='item-img-content'>
                 <%= image_tag item.image, class: "item-img" %>
 
                 <%# 商品が売れていればsold outを表示する %>
-                
-                  <div class='sold-out'>
-                    <span>Sold Out!!</span> 
-                  </div>
+                <%#<div class="sold-out">
+                  <span>Sold Out!!</span>
+                </div>  %>
+
               </div>
               
               <div class='item-info'>
