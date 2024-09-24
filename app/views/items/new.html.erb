@@ -8,7 +8,7 @@
     <%= form_with(model: @item, local: true) do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
-    
+
     <%# 商品画像 %>
     <div class="img-upload">
       <div class="weight-bold-text">
@@ -134,6 +134,7 @@
       </p>
     </div>
     <%# /注意書き %>
+    
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
       <%= f.submit "出品する" ,class:"sell-btn" %>
