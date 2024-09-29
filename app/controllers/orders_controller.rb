@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
   before_action :authenticate_user!, only: :index
+  before_action :check_purchase_access, only: [:index, :create]
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
@@ -38,5 +39,18 @@ class OrdersController < ApplicationController
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
   end
+
+# 購入ページへのアクセス制御
+def check_purchase_access
+  # 条件1: 自分の出品商品ならトップページにリダイレクト
+  if current_user == @item.user
+    redirect_to root_path
+  # 条件2: 売却済みの商品ならトップページにリダイレクト
+  elsif @item.order.present?
+    redirect_to root_path
+  end
+end
+
+
 
 end

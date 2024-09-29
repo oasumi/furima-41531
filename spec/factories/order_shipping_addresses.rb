@@ -6,8 +6,10 @@ FactoryBot.define do
     city { '磐田市' }
     street_address { '一言275-3' }
     building_name { 'ハイツ101' }
-    phone_number { '090-9947-3225' }
+    phone_number { '09099473225' }
     token {"tok_abcdefghijk00000000000000000"}
+    association :user
+    association :item
     
   end
 end
