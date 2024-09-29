@@ -1,9 +1,9 @@
 class OrderShippingAddress
   include ActiveModel::Model
   attr_accessor :postal_code, :shipping_origin_id, :city, :street_address, :building_name,
-  :phone_number, :user_id, :item_id, :order_id
+  :phone_number, :user_id, :item_id, :order_id, :token
 
-
+  validates :token, presence: true
 
 with_options presence: true do
   validates :city, :street_address, :phone_number , :user_id, :item_id
