@@ -95,6 +95,12 @@ RSpec.describe OrderShippingAddress, type: :model do
         @order_shipping_address.valid?
         expect(@order_shipping_address.errors.full_messages).to include("Item can't be blank")
       end
+
+      it 'phone_numberに半角数字以外が含まれている場合は購入できない' do
+        @order_shipping_address.phone_number = '090-1234-5678'  
+        @order_shipping_address.valid?
+        expect(@order_shipping_address.errors.full_messages).to include('Phone number is invalid')
+      end
     end
   end
 end
